@@ -1,0 +1,34 @@
+ALGORITHM Palindrome
+// An algorithm for checking if a word is a palindrome or not.
+
+// Input:
+//   mot: STRING - The word to be checked for palindrome
+VAR
+    mot : STRING;
+    i, nb_char : INTEGER;
+
+BEGIN
+    // Initialize nb_char to the length of the input word.
+    nb_char := LENGTH(mot);
+
+    IF (nb_char != 0 AND nb_char != 1) THEN
+        // Initialize a flag to indicate whether it's a palindrome or not.
+        palindrome_flag := TRUE;
+
+        FOR i FROM 0 TO (nb_char / 2) DO 
+            IF (mot[i] != mot[nb_char - 1 - i]) THEN
+                // If characters at symmetric positions don't match, it's not a palindrome.
+                palindrome_flag := FALSE;
+                BREAK; // Exit the loop early.
+            END_IF
+        END_FOR
+
+        IF palindrome_flag THEN
+            Write("This is a palindrome.")
+        ELSE
+            Write("This is not a palindrome.")
+        END_IF
+    ELSE
+        Write("The word cannot be a palindrome.")
+    END_IF
+END
